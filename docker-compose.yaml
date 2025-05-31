@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17.4-bookworm
+    container_name: totp_postgres
+    environment:
+      POSTGRES_DB: totp_auth_db
+      POSTGRES_USER: totp_user
+      POSTGRES_PASSWORD: totp_pass_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
+

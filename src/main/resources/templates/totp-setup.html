@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Configurar TOTP</title>
+</head>
+<body>
+<h2>Configurar Autenticação 2FA (TOTP)</h2>
+<p>Escaneie o QR Code abaixo com seu aplicativo autenticador (Google Authenticator, Authy, etc):</p>
+<div th:if="${qrCodeDataUrl != null}">
+    <img th:src="${qrCodeDataUrl}" alt="QR Code TOTP"/>
+</div>
+<p>Ou insira manualmente este código no app: <span th:text="${totpSecret}"></span></p>
+<form th:action="@{/totp/enable}" method="post">
+    <label>Digite o código de 6 dígitos do app: <input type="text" name="totpCode" required></label><br>
+    <button type="submit">Ativar 2FA</button>
+</form>
+</body>
+</html>
+
